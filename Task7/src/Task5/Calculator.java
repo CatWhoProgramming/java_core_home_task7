@@ -14,8 +14,22 @@ public class Calculator {
     }
 
     public static double div(double a, double b) {
-        if (a == 0 || b == 0)
-            throw new NullPointerException();
+
+        if (a == 0) {
+            try {
+                throw new MyException("\u001b[38;5;23m" + "  Seriously!!!  ");
+            } catch (MyException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (b == 0)
+            throw new ArithmeticException();
         return a / b;
+    }
+}
+
+class MyException extends Exception {
+    public MyException(String s) {
+        super(s);
     }
 }
